@@ -1,0 +1,24 @@
+import { Schema, model, Document } from "mongoose";
+import { Role } from "../types/users";
+
+interface UserRegisterDocument extends Document {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    role: Role;
+}
+
+const userRegisterSchema = new Schema<UserRegisterDocument>({
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    role: { type: String, enum: ['admin', 'visit', 'client'], required: true }
+}, {
+    timestamps: true
+});
+
+const UserRegisterModel = model<UserRegisterDocument>('UserRegister', userRegisterSchema);
+
+export default UserRegisterModel;
