@@ -19,5 +19,9 @@ mongoose.connect(URI_MONGO)
     console.log("✖ Error Data base");
 })
 
+import userRegisterRouter from './controllers/userRegister';
+
+app.use("/user/register", userRegisterRouter)
+
 
 export default app;
