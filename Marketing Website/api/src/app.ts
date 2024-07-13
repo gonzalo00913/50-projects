@@ -21,9 +21,10 @@ mongoose.connect(URI_MONGO)
 
 import userRegisterRouter from './controllers/userRegister';
 import loginRouter from './controllers/userLogin';
+import postRouter from './controllers/post';
 
 app.use("/user/register", userRegisterRouter)
 app.use("/user/login", loginRouter)
-
+app.use("/user/post", postRouter)
 
 export default app;
