@@ -1,10 +1,8 @@
 import * as dotenv from 'dotenv';
 import express from "express";
 import mongoose from "mongoose"
+import { tokenExtractor } from './utils/middleware';
 dotenv.config();
-
-const app = express();
-app.use(express.json());
 
 const URI_MONGO: string | undefined = process.env.URI_MONGO;
 
@@ -22,6 +20,10 @@ mongoose.connect(URI_MONGO)
 import userRegisterRouter from './controllers/userRegister';
 import loginRouter from './controllers/userLogin';
 import postRouter from './controllers/post';
+
+const app = express();
+app.use(express.json());
+app.use(tokenExtractor)
 
 app.use("/user/register", userRegisterRouter)
 app.use("/user/login", loginRouter)

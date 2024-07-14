@@ -1,18 +1,22 @@
 import express, { Request, Response } from "express";
 import PostModel from "../models/post";
 import { Post } from "../types/post";
+import jwt from 'jsonwebtoken';
+import { CustomRequest } from '../utils/middleware'; 
 
 const postRouter = express.Router();
 
-postRouter.post("/", async (req: Request, res: Response) => {
-  const { title, image, description, createdBy }: Post = req.body;
+postRouter.post("/", async (req: CustomRequest, res: Response) => { // Uso CustomRequest en lugar de Request
+  const { title, image, description }: Post = req.body;
 
   try {
+    const decodedToken = jwt.verify(req.token!, process.env.JWT_SECRET!) as { id: string };
+
     const newPost = new PostModel({
       title,
       image,
       description,
-      createdBy,
+      createdBy: decodedToken.id,
     });
 
     await newPost.save();
