@@ -6,11 +6,15 @@ import { CustomRequest } from '../utils/middleware';
 
 const postRouter = express.Router();
 
-postRouter.post("/", async (req: CustomRequest, res: Response) => { // Uso CustomRequest en lugar de Request
+postRouter.post("/", async (req: CustomRequest, res: Response) => {
   const { title, image, description }: Post = req.body;
 
   try {
-    const decodedToken = jwt.verify(req.token!, process.env.JWT_SECRET!) as { id: string };
+    const decodedToken = jwt.verify(req.token!, process.env.JWT_SECRET!) as { id: string, role: string};
+
+    if(decodedToken.role !== "admin"){
+      return res.status(403).json({ message: "Forbidden: Requires admin role" });
+    }
 
     const newPost = new PostModel({
       title,
