@@ -34,8 +34,8 @@ userRegisterRouter.post("/", async (req: Request, res: Response) => {
 });
 
 userRegisterRouter.get("/", async (req: Request, res: Response) => {
-  const user = await UserRegisterModel.find({});
-  res.json(user);
+  const users = await UserRegisterModel.find({}).populate('post');
+  res.json(users);
 });
 
 export default userRegisterRouter;

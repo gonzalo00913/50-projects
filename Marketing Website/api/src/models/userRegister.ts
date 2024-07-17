@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document, Types } from "mongoose";
 import { Role } from "../types/users";
 
 interface UserRegisterDocument extends Document {
@@ -7,6 +7,7 @@ interface UserRegisterDocument extends Document {
     email: string;
     password: string;
     role: Role;
+    post: Types.ObjectId[]; 
 }
 
 const userRegisterSchema = new Schema<UserRegisterDocument>({
@@ -14,7 +15,8 @@ const userRegisterSchema = new Schema<UserRegisterDocument>({
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ['admin', 'visit', 'client'], required: true }
+    role: { type: String, enum: ['admin', 'visit', 'client'], required: true },
+    post: [{ type: Schema.Types.ObjectId, ref: 'Post' }]
 }, {
     timestamps: true
 });
