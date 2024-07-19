@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv';
 import express from "express";
 import mongoose from "mongoose"
 import { tokenExtractor } from './utils/middleware';
+import cors from "cors"
 dotenv.config();
 
 const URI_MONGO: string | undefined = process.env.URI_MONGO;
@@ -24,6 +25,7 @@ import postRouter from './controllers/post';
 const app = express();
 app.use(express.json());
 app.use(tokenExtractor)
+app.use(cors())
 
 app.use("/user/register", userRegisterRouter)
 app.use("/user/login", loginRouter)
