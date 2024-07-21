@@ -1,0 +1,17 @@
+.container{
+    background-color: rgb(158, 158, 158);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    width: 250px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.containerParrafo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}

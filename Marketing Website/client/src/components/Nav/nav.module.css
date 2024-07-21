@@ -1,0 +1,18 @@
+.nav{
+    background-color: #cecccc;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.parrafoNav{
+    text-decoration: none;
+    margin: 10px;
+    font-size: 19px;
+    color: #313131;
+    font-weight: bold;
+}
+
+.parrafoNav:hover{
+    color: rgb(91, 126, 192);
+}
