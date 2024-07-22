@@ -30,5 +30,6 @@ app.use(cors())
 app.use("/user/register", userRegisterRouter)
 app.use("/user/login", loginRouter)
 app.use("/user/post", postRouter)
-
+app.use("/user/delete", postRouter)
+app.use("/user/edit", postRouter)
 export default app;

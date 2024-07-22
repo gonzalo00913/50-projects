@@ -45,7 +45,7 @@ function App() {
             <Dashboard />
           </ProtectedRoute>
         } />
-        <Route path="/create" element={<CreateForm/> } />
+        <Route path="/create" element={<CreateForm setContent={setContent}/> } />
       </Routes>
 
     </div>
