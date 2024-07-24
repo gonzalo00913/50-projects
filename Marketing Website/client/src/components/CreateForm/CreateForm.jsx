@@ -18,6 +18,8 @@ const CreateForm = ({ setContent }) => {
         return;
       }
 
+      contentService.setToken(token)
+
       const newPost = {
         title,
         image,

@@ -1,18 +1,32 @@
 .nav{
-    background-color: #cecccc;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+    height: 48px;
+    align-items: center;
+    border-bottom: 2px solid #3c5b6f7c;
+    width: 450px;
 }
 
-.parrafoNav{
+
+.logo{
     text-decoration: none;
-    margin: 10px;
-    font-size: 19px;
-    color: #313131;
+    font-size: 17px;
+    color: #dfd0b8c9;
+    margin: -44px 0px 0px 0px;
+    margin-left: 20px;
     font-weight: bold;
 }
 
 .parrafoNav:hover{
-    color: rgb(91, 126, 192);
+    color: #948979;
+}
+
+ul{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    list-style: none;
+}
+
+.iconNav{
+    width: 120px;
+    margin: -42px 0px 0px 0px;
 }

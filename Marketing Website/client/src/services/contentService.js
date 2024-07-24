@@ -16,13 +16,15 @@ const getAll = async () => {
 };
 
 const create = async (newObject) => {
+  if (!token) {
+    throw new Error("Token no encontrado. Asegúrate de haber iniciado sesión.");
+  }
   const config = {
     headers: { Authorization: token },
-  }
-  const response = await axios.post(baseUrl, newObject, config)
+  };
+  const response = await axios.post(baseUrl, newObject, config);
   return response.data;
 };
-
 
 export default {
   getAll,
