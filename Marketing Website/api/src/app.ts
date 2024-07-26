@@ -14,8 +14,8 @@ if (!URI_MONGO) {
 mongoose.connect(URI_MONGO)
 .then(() => {
   console.log("✅ Data base connect");
-}).catch(() => {
-    console.log("✖ Error Data base");
+}).catch((error) => {
+    console.log("✖ Error Data base", error.message);
 })
 
 import userRegisterRouter from './controllers/userRegister';
