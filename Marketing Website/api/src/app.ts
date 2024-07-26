@@ -21,6 +21,7 @@ mongoose.connect(URI_MONGO)
 import userRegisterRouter from './controllers/userRegister';
 import loginRouter from './controllers/userLogin';
 import postRouter from './controllers/post';
+import publicRouter from './controllers/getpublic';
 
 const app = express();
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use(cors())
 app.use("/user/register", userRegisterRouter)
 app.use("/user/login", loginRouter)
 app.use("/user/post", postRouter)
+app.use("/public", publicRouter)
 app.use("/user/delete", postRouter)
 app.use("/user/edit", postRouter)
 export default app;
