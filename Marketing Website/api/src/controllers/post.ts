@@ -10,7 +10,18 @@ const postRouter = express.Router();
 
 postRouter.get("/", async (req: CustomRequest, res: Response) => {
   try {
-    const posts = await PostModel.find({});
+    const decodedToken = jwt.verify(req.token!, process.env.JWT_SECRET!) as {
+      id: string;
+      role: string;
+    };
+    
+    if (decodedToken.role !== "admin") {
+      return res
+        .status(403)
+        .json({ message: "Forbidden: Requires admin role" });
+    }
+
+    const posts = await PostModel.find({createdBy: decodedToken.id});
     res.json(posts);
   } catch (error) {
     res.status(500).json({ message: "Server error", error });

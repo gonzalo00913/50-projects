@@ -21,7 +21,7 @@ loginRouter.post("/", async (req: Request, res: Response) => {
           return res.status(400).json({ message: "Incorrect password." });
         }
         
-        const token = jwt.sign({ id: user._id, email: user.email, role: user.role }, process.env.JWT_SECRET!, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id, email: user.email, role: user.role }, process.env.JWT_SECRET!/* , { expiresIn: '1h' } */);
 
         res.json({ message: "Inicio de sesión exitoso", token });
     } catch (error) {
